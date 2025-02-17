@@ -12,4 +12,12 @@ class DirectorsController < ApplicationController
 
     render({:template => "director_templates/details"})
   end
+
+  def youngest
+    the_dir_dob = Director.maximum(:dob)
+    @the_dir = Director.where({:dob => the_dir_dob}).first
+    render({:template => "director_templates/youngest"})
+  end
+
+
 end
